@@ -1,0 +1,74 @@
+{
+  "source": {
+    "full_page_url": "https://www.onebiji.com/hykb_tools/comm/lkwgmerchant/preview.php?id=1&immgj=0",
+    "api_url": "https://huodong2.4399.com/n/comm/tool/api.php?path=lkyxGood/index&tool_id=11",
+    "timeout_seconds": 15,
+    "retries": 3
+  },
+  "qq": {
+    "enabled": true,
+    "base_url": "http://127.0.0.1:3000",
+    "access_token": "",
+    "target_type": "private",
+    "target_id": "",
+    "target_ids": []
+  },
+  "monitor": {
+    "poll_seconds": 300,
+    "low_power_mode": true,
+    "min_batch_age_minutes": 3,
+    "state_file": "data/state.json",
+    "log_file": "logs/merchant_bot.log"
+  },
+  "subscription_commands": {
+    "enabled": false,
+    "add_keywords": [
+      "开启推送"
+    ],
+    "recent_count": 20,
+    "confirm_message": "【远行商人】\n已开启推送",
+    "already_enabled_message": "【远行商人】\n你已经在推送名单内"
+  },
+  "rare": {
+    "names": [
+      "棱镜球",
+      "炫彩蛋",
+      "炫彩精灵蛋",
+      "赛季炫彩精灵蛋",
+      "国王球",
+      "首领血脉秘药",
+      "祝福项坠"
+    ],
+    "name_keywords": [
+      "炫彩",
+      "棱镜",
+      "首领血脉"
+    ],
+    "tag_keywords": [
+      "超级稀有",
+      "较为罕见",
+      "露头就秒"
+    ],
+    "trust_source_worth_flag": true
+  },
+  "weekend_sale": {
+    "ball_keywords": [
+      "球"
+    ],
+    "item_names": [
+      "残缺魔镜",
+      "适格钥匙",
+      "能力钥匙"
+    ],
+    "event_limit_names": [
+      "残缺魔镜",
+      "适格钥匙",
+      "能力钥匙"
+    ],
+    "exclude_names": [
+      "国王球",
+      "棱镜球",
+      "炫彩球"
+    ]
+  }
+}
