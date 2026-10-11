@@ -23,12 +23,27 @@ Linux 包不适用于 ARM、Alpine/musl 或较老的 glibc。其他架构可以�
 
 QQ 登录由 NapCat 完成。本工具不收集 QQ 密码，不代替扫码验证，也不包含作者的登录状态、Token 或接收名单。
 
-1. 按 [NapCat 官方安装说明](https://napneko.github.io/guide/boot/Shell) 安装对应系统的 NapCat。
-2. 在 NapCat 中登录你自己的机器人 QQ。接收账号可以是你的主 QQ，双方应能正常私聊；群推送则要求机器人已加入目标群。
-3. 在 NapCat 的 WebUI 中添加并启用 **HTTP 服务**：Host 填 `127.0.0.1`、Port 填 `3000`，自己设置一个 HTTP Token，保存。
-4. 记下地址 `http://127.0.0.1:3000` 和 Token。这里需要 **OneBot HTTP 服务的 Token**，不是 NapCat WebUI 的登录 Token。
+1. 按 [NapCat 官方安装说明](https://napneko.github.io/guide/boot/Shell) 在电脑上安装并启动 NapCat，用手机 QQ 扫 NapCat 显示的二维码登录。接收账号可以是主 QQ；群推送要求机器人已加入目标群。
+2. **扫码只完成 QQ 登录，还需要配置下面的 HTTP 服务。** 回到电脑的 NapCat 启动窗口，找到 `WebUI` / `WebUi User Panel Url` / `WebUI Local Panel Url` 那一行，复制完整网址到电脑浏览器。管理页面通常是 `http://127.0.0.1:6099/webui/`，实际地址、端口和管理密码以启动窗口为准；不要关闭 NapCat。
+3. 登录管理页面。如果要求管理密码，使用启动窗口显示的 **WebUI Token**；按页面要求修改管理密码后进入面板。
+4. 点击左侧 **网络配置 → 新建 → HTTP 服务端（HTTP 服务器）**。不要选择 HTTP 客户端或 WebSocket。填入：
 
-如果 3000 已被其他服务使用，换一个空闲端口，并在本工具中填写相同地址。机器人和提醒程序分开部署时，填写实际可访问的接口地址。
+   | NapCat 设置 | 填什么 |
+   | --- | --- |
+   | 名称（若需要） | `merchant-http`，只是便于识别 |
+   | Host / 主机 | `127.0.0.1` |
+   | Port / 端口 | `3000` |
+   | Token / 访问令牌 | **自己设置一段随机字符**，并记下来 |
+   | 启用 / 保存时启用 | 打开，保存 |
+
+5. 回到远行商人提醒工具：**HTTP 接口地址填 `http://127.0.0.1:3000`；HTTP Token 填刚才第 4 步自己设置的那一段。** 不要填管理页面的 6099 地址，也不要复制 WebUI 的登录密码。
+6. 填接收 QQ / 群号，点击“检查 QQ 登录”，再点击“发送测试”。正常后再开启自动提醒。
+
+**为什么扫码后找不到 Token？** 提醒工具要用的 HTTP Token 由自己在“HTTP 服务端”里设置，不是扫码后手机给的一串号码。手机 QQ 里没有这个配置入口；如果只登录了普通 QQ，需要先在电脑上运行 NapCat，再打开它的管理页面。
+
+以上地址适用于 NapCat 和提醒工具在同一台电脑运行、非 Docker 的情况。3000 被占用时换一个空闲端口，并同步修改工具的地址。跨电脑或 Docker 部署需要使用实际可访问的地址和映射端口，不能照抄 `127.0.0.1`。
+
+两个 Token 用途不同：**WebUI Token 用来进入管理页面；HTTP Token 用来让提醒工具连接 QQ 接口。** 找不到管理入口或 WebUI Token 时，参照 [NapCat 官方 WebUI 配置指南](https://napneko.github.io/config/starter.shell)。
 
 ## Windows
 
